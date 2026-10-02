@@ -1,0 +1,194 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Default-Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Global Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email == 'officialraj2@gmail.com' && request.auth.token.email_verified == true)
+      );
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow get: if true;
+    }
+
+    // Admins collection
+    match /admins/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow write: if false; // System provisioned only
+    }
+
+    // Validation helper for UserProfile
+    function isValidUserProfile(data) {
+      return data.keys().hasAll(['uid', 'email', 'displayName']) &&
+             data.keys().hasOnly(['uid', 'email', 'displayName', 'photoURL', 'activeWorkspaceId', 'createdAt', 'updatedAt']) &&
+             data.uid == request.auth.uid &&
+             data.email is string && data.email.size() <= 256 &&
+             data.displayName is string && data.displayName.size() <= 120 &&
+             (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 512)) &&
+             (!('activeWorkspaceId' in data) || (data.activeWorkspaceId is string && data.activeWorkspaceId.size() <= 128));
+    }
+
+    // /users/{userId}
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isOwner(userId) && isValidId(userId) && isValidUserProfile(incoming());
+      allow update: if isOwner(userId) && isValidId(userId) && isValidUserProfile(incoming()) &&
+                      incoming().uid == existing().uid &&
+                      incoming().email == existing().email &&
+                      incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'activeWorkspaceId', 'updatedAt']);
+      allow delete: if isAdmin();
+    }
+
+    // Validation helper for Workspace
+    function isValidWorkspace(data) {
+      return data.keys().hasAll(['id', 'name', 'ownerId', 'ownerEmail', 'category']) &&
+             data.keys().hasOnly(['id', 'name', 'ownerId', 'ownerEmail', 'category', 'phone', 'teamSize', 'website', 'plan', 'metaPixelId', 'googleTagId', 'pixelTrackingEnabled', 'createdAt', 'updatedAt']) &&
+             data.id is string && data.id.size() <= 128 &&
+             data.name is string && data.name.size() >= 2 && data.name.size() <= 120 &&
+             data.ownerId == request.auth.uid &&
+             data.ownerEmail is string && data.ownerEmail.size() <= 256 &&
+             data.category is string && data.category.size() <= 100 &&
+             (!('phone' in data) || (data.phone is string && data.phone.size() <= 30)) &&
+             (!('teamSize' in data) || (data.teamSize is string && data.teamSize.size() <= 50)) &&
+             (!('website' in data) || (data.website is string && data.website.size() <= 256)) &&
+             (!('plan' in data) || (data.plan is string && data.plan.size() <= 50)) &&
+             (!('metaPixelId' in data) || (data.metaPixelId is string && data.metaPixelId.size() <= 60)) &&
+             (!('googleTagId' in data) || (data.googleTagId is string && data.googleTagId.size() <= 60)) &&
+             (!('pixelTrackingEnabled' in data) || data.pixelTrackingEnabled is bool);
+    }
+
+    // /workspaces/{workspaceId}
+    match /workspaces/{workspaceId} {
+      allow get: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && (resource.data.ownerId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && isValidId(workspaceId) && isValidWorkspace(incoming()) && incoming().ownerId == request.auth.uid;
+      allow update: if isSignedIn() && isValidId(workspaceId) && isValidWorkspace(incoming()) &&
+                      existing().ownerId == request.auth.uid &&
+                      incoming().ownerId == existing().ownerId &&
+                      incoming().id == existing().id &&
+                      incoming().diff(existing()).affectedKeys().hasOnly(['name', 'category', 'phone', 'teamSize', 'website', 'plan', 'metaPixelId', 'googleTagId', 'pixelTrackingEnabled', 'updatedAt']);
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+
+      // Validation helper for WorkspaceLead
+      function isValidWorkspaceLead(data, wsId) {
+        return data.keys().hasAll(['id', 'workspaceId', 'name', 'phone', 'status']) &&
+               data.keys().hasOnly(['id', 'workspaceId', 'name', 'email', 'phone', 'source', 'status', 'value', 'notes', 'createdAt', 'updatedAt']) &&
+               data.id is string && data.id.size() <= 128 &&
+               data.workspaceId == wsId &&
+               data.name is string && data.name.size() >= 1 && data.name.size() <= 120 &&
+               data.phone is string && data.phone.size() <= 30 &&
+               data.status in ['new', 'contacted', 'qualified', 'converted', 'lost'] &&
+               (!('email' in data) || (data.email is string && data.email.size() <= 256)) &&
+               (!('source' in data) || (data.source is string && data.source.size() <= 100)) &&
+               (!('value' in data) || (data.value is number && data.value >= 0)) &&
+               (!('notes' in data) || (data.notes is string && data.notes.size() <= 1000));
+      }
+
+      // /workspaces/{workspaceId}/leads/{leadId}
+      match /leads/{leadId} {
+        allow get: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+        allow list: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+        allow create: if isSignedIn() && isValidId(leadId) &&
+                         isValidWorkspaceLead(incoming(), workspaceId) &&
+                         get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid;
+        allow update: if isSignedIn() && isValidId(leadId) &&
+                         isValidWorkspaceLead(incoming(), workspaceId) &&
+                         get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid &&
+                         incoming().id == existing().id &&
+                         incoming().workspaceId == existing().workspaceId &&
+                         incoming().diff(existing()).affectedKeys().hasOnly(['name', 'email', 'phone', 'source', 'status', 'value', 'notes', 'updatedAt']);
+        allow delete: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+      }
+
+      // Validation helper for PixelEvent
+      function isValidPixelEvent(data, wsId) {
+        return data.keys().hasAll(['id', 'workspaceId', 'eventName', 'eventSource']) &&
+               data.keys().hasOnly(['id', 'workspaceId', 'eventName', 'eventSource', 'payloadJson', 'pixelDestination', 'createdAt']) &&
+               data.id is string && data.id.size() <= 128 &&
+               data.workspaceId == wsId &&
+               data.eventName is string && data.eventName.size() <= 80 &&
+               data.eventSource is string && data.eventSource.size() <= 120 &&
+               (!('payloadJson' in data) || (data.payloadJson is string && data.payloadJson.size() <= 2048)) &&
+               (!('pixelDestination' in data) || (data.pixelDestination is string && data.pixelDestination.size() <= 100));
+      }
+
+      // /workspaces/{workspaceId}/pixel_events/{eventId}
+      match /pixel_events/{eventId} {
+        allow get: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+        allow list: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+        allow create: if isSignedIn() && isValidId(eventId) &&
+                         isValidPixelEvent(incoming(), workspaceId) &&
+                         get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid;
+        allow update: if false; // Pixel tracking events are append-only audit logs
+        allow delete: if isSignedIn() && (
+          get(/databases/$(database)/documents/workspaces/$(workspaceId)).data.ownerId == request.auth.uid || isAdmin()
+        );
+      }
+    }
+
+    // Validation helper for Demo & Free Trial Requests (Public submission)
+    function isValidDemoRequest(data) {
+      return data.keys().hasAll(['id', 'name', 'phone', 'email']) &&
+             data.keys().hasOnly(['id', 'name', 'phone', 'email', 'company', 'category', 'requestType', 'plan', 'date', 'notes', 'createdAt']) &&
+             data.id is string && data.id.size() <= 128 &&
+             data.name is string && data.name.size() >= 1 && data.name.size() <= 120 &&
+             data.phone is string && data.phone.size() <= 30 &&
+             data.email is string && data.email.size() <= 256 &&
+             (!('company' in data) || (data.company is string && data.company.size() <= 120)) &&
+             (!('category' in data) || (data.category is string && data.category.size() <= 100)) &&
+             (!('requestType' in data) || (data.requestType is string && data.requestType.size() <= 50)) &&
+             (!('plan' in data) || (data.plan is string && data.plan.size() <= 80)) &&
+             (!('date' in data) || (data.date is string && data.date.size() <= 100)) &&
+             (!('notes' in data) || (data.notes is string && data.notes.size() <= 1000));
+    }
+
+    // /demo_requests/{requestId}
+    match /demo_requests/{requestId} {
+      allow get, list: if isAdmin();
+      allow create: if isValidId(requestId) && isValidDemoRequest(incoming());
+      allow update, delete: if isAdmin();
+    }
+  }
+}

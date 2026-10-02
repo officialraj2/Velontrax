@@ -1,0 +1,6 @@
+# Robots.txt for VelontraX - India's #1 AI Automation Software
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://velontra.com/sitemap.xml

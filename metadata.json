@@ -1,0 +1,6 @@
+{
+  "name": "VelontraX | Enterprise AI Automation Platform",
+  "description": "The Unified AI Automation Platform for High-Velocity Enterprises. Smart CRM, Predictive Lead Enrichment, AI Agents, and Automated Workflows running around the clock.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

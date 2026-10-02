@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage: India's No 1 Automation Software -->
+  <url>
+    <loc>https://velontra.com/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Solutions Page: 10 Modern Business Verticals & 94+ Features -->
+  <url>
+    <loc>https://velontra.com/#solutions</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Pricing Page: ₹3,000/mo & ₹20,000/yr (Save ₹16k) -->
+  <url>
+    <loc>https://velontra.com/#pricing</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- How It Works: Autonomous Workflow Journey -->
+  <url>
+    <loc>https://velontra.com/#how-it-works</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Workspace Sign In & 15-Day Free Trial -->
+  <url>
+    <loc>https://velontra.com/#login</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Legal: Privacy Policy & Meta Compliance -->
+  <url>
+    <loc>https://velontra.com/#privacy-policy</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- Legal: Terms of Service -->
+  <url>
+    <loc>https://velontra.com/#terms-and-conditions</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

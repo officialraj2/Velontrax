@@ -1,0 +1,313 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile records containing account credentials, role, and active workspace mapping.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user.",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "User account email address.",
+          "format": "email",
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Full name or business persona display name.",
+          "maxLength": 120
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar URL of the user profile.",
+          "maxLength": 512
+        },
+        "activeWorkspaceId": {
+          "type": "string",
+          "description": "Identifier of the currently selected business workspace.",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp or server timestamp when the profile was initialized."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp or server timestamp when the profile was last modified."
+        }
+      },
+      "required": ["uid", "email", "displayName"]
+    },
+    "Workspace": {
+      "title": "Workspace",
+      "description": "Business workspace containing CRM configuration, team parameters, and pixel tracking settings.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique workspace identifier.",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Official business or company workspace name.",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the workspace owner.",
+          "maxLength": 128
+        },
+        "ownerEmail": {
+          "type": "string",
+          "description": "Email address of the workspace creator.",
+          "format": "email",
+          "maxLength": 256
+        },
+        "category": {
+          "type": "string",
+          "description": "Business vertical or industry category.",
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "description": "WhatsApp or official business phone number.",
+          "maxLength": 30
+        },
+        "teamSize": {
+          "type": "string",
+          "description": "Team size band (e.g. 1-5, 6-20, 20+).",
+          "maxLength": 50
+        },
+        "website": {
+          "type": "string",
+          "description": "Company website or funnel URL.",
+          "maxLength": 256
+        },
+        "plan": {
+          "type": "string",
+          "description": "Active subscription tier (e.g. 15-day-trial, growth-standard, enterprise-unlimited).",
+          "maxLength": 50
+        },
+        "metaPixelId": {
+          "type": "string",
+          "description": "Meta Facebook Pixel ID for tracking conversion events.",
+          "maxLength": 60
+        },
+        "googleTagId": {
+          "type": "string",
+          "description": "Google Analytics 4 Measurement ID or Google Tag Manager ID.",
+          "maxLength": 60
+        },
+        "pixelTrackingEnabled": {
+          "type": "boolean",
+          "description": "Flag indicating whether pixel tracking and event dispatcher are enabled."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the workspace was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the workspace was last updated."
+        }
+      },
+      "required": ["id", "name", "ownerId", "ownerEmail", "category"]
+    },
+    "WorkspaceLead": {
+      "title": "WorkspaceLead",
+      "description": "Inbound customer leads captured through marketing funnels, WhatsApp, or manual CRM entry.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the lead.",
+          "maxLength": 128
+        },
+        "workspaceId": {
+          "type": "string",
+          "description": "ID of the workspace that owns this lead.",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Lead prospect full name.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email address of the prospect.",
+          "format": "email",
+          "maxLength": 256
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact mobile or WhatsApp number.",
+          "maxLength": 30
+        },
+        "source": {
+          "type": "string",
+          "description": "Marketing channel source (e.g. Meta Ads, WhatsApp Bot, Organic Website, Demo Request).",
+          "maxLength": 100
+        },
+        "status": {
+          "type": "string",
+          "description": "Pipeline stage (new, contacted, qualified, converted, lost).",
+          "enum": ["new", "contacted", "qualified", "converted", "lost"]
+        },
+        "value": {
+          "type": "number",
+          "description": "Estimated deal monetary value in INR."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Internal CRM notes regarding the lead interaction.",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the lead was generated."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the lead status was updated."
+        }
+      },
+      "required": ["id", "workspaceId", "name", "phone", "status"]
+    },
+    "PixelEvent": {
+      "title": "PixelEvent",
+      "description": "Audit log for pixel tracking conversion events fired on client funnels and web forms.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique event tracking ID.",
+          "maxLength": 128
+        },
+        "workspaceId": {
+          "type": "string",
+          "description": "Target workspace ID.",
+          "maxLength": 128
+        },
+        "eventName": {
+          "type": "string",
+          "description": "Conversion event name (e.g. PageView, Lead, ScheduleDemo, CompleteRegistration).",
+          "maxLength": 80
+        },
+        "eventSource": {
+          "type": "string",
+          "description": "Originating page or interface (e.g. landing_page, demo_modal, pricing).",
+          "maxLength": 120
+        },
+        "payloadJson": {
+          "type": "string",
+          "description": "JSON stringified event parameters for pixel audit trail.",
+          "maxLength": 2048
+        },
+        "pixelDestination": {
+          "type": "string",
+          "description": "Destination channel (e.g. Meta Pixel, Google Tag, Internal Firestore Analytics).",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when event occurred."
+        }
+      },
+      "required": ["id", "workspaceId", "eventName", "eventSource"]
+    },
+    "DemoRequest": {
+      "title": "DemoRequest",
+      "description": "Live demo and 15-day free trial requests submitted by prospective business clients.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique request identifier.",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the contact person.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "description": "WhatsApp or mobile contact number.",
+          "maxLength": 30
+        },
+        "email": {
+          "type": "string",
+          "description": "Business email address.",
+          "format": "email",
+          "maxLength": 256
+        },
+        "company": {
+          "type": "string",
+          "description": "Company or agency name.",
+          "maxLength": 120
+        },
+        "category": {
+          "type": "string",
+          "description": "Business vertical / category.",
+          "maxLength": 100
+        },
+        "requestType": {
+          "type": "string",
+          "description": "free_trial or live_demo.",
+          "maxLength": 50
+        },
+        "plan": {
+          "type": "string",
+          "description": "Selected pricing plan or capability.",
+          "maxLength": 80
+        },
+        "date": {
+          "type": "string",
+          "description": "Preferred time slot or date.",
+          "maxLength": 100
+        },
+        "notes": {
+          "type": "string",
+          "description": "Business requirements and notes.",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the request was submitted."
+        }
+      },
+      "required": ["id", "name", "phone", "email"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user profile records restricted to account owner and verified admins."
+    },
+    "/workspaces/{workspaceId}": {
+      "schema": "Workspace",
+      "description": "Business workspace instances containing CRM settings, contact info, and pixel configuration."
+    },
+    "/workspaces/{workspaceId}/leads/{leadId}": {
+      "schema": "WorkspaceLead",
+      "description": "Customer leads captured and managed within a business workspace."
+    },
+    "/workspaces/{workspaceId}/pixel_events/{eventId}": {
+      "schema": "PixelEvent",
+      "description": "Stream of pixel conversion tracking events logged for the workspace."
+    },
+    "/demo_requests/{requestId}": {
+      "schema": "DemoRequest",
+      "description": "Inbound demo and 15-day free trial requests for velontrax team."
+    }
+  }
+}

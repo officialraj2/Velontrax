@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScreenType } from '../types/index.ts';
 import { AnimatedPanelStudio } from '../components/AnimatedPanelStudio.tsx';
+import { VelontraXOrbitShowcase } from '../components/VelontraXOrbitShowcase.tsx';
 
 interface PlatformHomeProps {
   onNavigate: (screen: ScreenType) => void;
@@ -55,7 +56,7 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
   }, [currentText, isDeleting, phraseIndex, typingSpeed]);
 
   // View filter for Problem / Solution Matrix section
-  const [matrixView, setMatrixView] = useState<'all' | 'problem' | 'solution'>('all');
+  const [matrixView, setMatrixView] = useState<'problem' | 'solution'>('problem');
 
   const handleSandboxSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,14 +82,18 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
         {/* Hero Header Block */}
         <section className="relative max-w-[1440px] mx-auto px-4 sm:px-8 pt-10 sm:pt-16 pb-10 flex flex-col items-center text-center">
           {/* High-Tech Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#222a3d]/80 border border-[#2d3449] shadow-md backdrop-blur-md mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-ping" />
-            <span className="text-[11px] uppercase tracking-widest text-[#ffc174] font-bold">
-              VelontraX Core Engine v4.2 Live
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-gradient-to-r from-[#172238]/95 via-[#1f2d48]/95 to-[#172238]/95 border border-[#ffc174]/50 shadow-[0_0_30px_rgba(255,193,116,0.25)] backdrop-blur-xl mb-6 hover:border-[#ffc174] hover:shadow-[0_0_40px_rgba(255,193,116,0.4)] transition-all duration-300">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc174] opacity-80" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f59e0b] shadow-[0_0_8px_#ffc174]" />
             </span>
-            <span className="text-[#a08e7a]">/</span>
-            <span className="text-[11px] text-[#d8c3ad] font-medium">
-              Autonomous Ops Architecture
+            <span className="text-[11px] sm:text-xs uppercase tracking-widest font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#f59e0b] drop-shadow-[0_0_15px_rgba(255,193,116,0.35)]">
+              AI-POWERED ALL-IN-ONE BUSINESS AUTOMATION
+            </span>
+            <span className="text-[#ffc174]/60 font-mono text-xs">/</span>
+            <span className="text-[11px] sm:text-xs font-extrabold text-[#dae2fd] tracking-wide flex items-center gap-2">
+              <span className="text-[#ffddb8]">MORE POWER &amp; SPEED</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] bg-[#ffc174]/20 text-[#ffc174] border border-[#ffc174]/50 font-mono font-bold shadow-[0_0_12px_rgba(255,193,116,0.25)]">94+ MODULES LIVE</span>
             </span>
           </div>
 
@@ -180,6 +185,93 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
         onOpenBookDemo={onOpenBookDemo}
       />
 
+      {/* SEO Authority & Orbit Ecosystem Section: India's No. 1 AI Automation Software */}
+      <section 
+        aria-label="India's No 1 AI Automation Software Overview"
+        className="max-w-[1440px] mx-auto px-4 sm:px-8 py-10 w-full"
+      >
+        <div className="rounded-2xl sm:rounded-3xl bg-[#0c1427] border border-[#222f47] p-3 sm:p-10 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#ffc174]/10 rounded-full blur-[100px] pointer-events-none" />
+
+          {/* Section Header */}
+          <div className="max-w-3xl mb-6 sm:mb-8 px-1">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#172238]/95 via-[#1f2d48]/95 to-[#172238]/95 border border-[#ffc174]/40 shadow-[0_0_20px_rgba(255,193,116,0.2)] text-xs font-bold uppercase tracking-wider mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc174] opacity-80" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f59e0b]" />
+              </span>
+              <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#f59e0b]">
+                INDIA'S NO. 1 AI OPERATING SYSTEM
+              </span>
+              <span className="text-[#a08e7a]">/</span>
+              <span className="text-[#dae2fd] font-bold">NEXT-GEN AUTOMATION</span>
+            </div>
+            <h2 className="font-['Plus_Jakarta_Sans'] text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              VelontraX: India's No. 1 AI Automation Software &amp; Complete Business CRM
+            </h2>
+            <p className="text-sm sm:text-base text-[#d8c3ad] mt-3 leading-relaxed">
+              Engineered by <strong className="text-white">Velontra Global</strong>, VelontraX is the all-in-one business automation platform built to help Indian digital agencies, real estate builders, e-commerce stores, and high-growth startups capture, qualify, and convert leads at 10x speed.
+            </p>
+          </div>
+
+          {/* Central VelontraX Orbiting Ecosystem Showcase */}
+          <div className="w-full my-6 sm:my-8">
+            <VelontraXOrbitShowcase />
+          </div>
+
+          {/* 4 Core Pillars for SEO Authority */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#ffc174] flex items-center justify-center font-bold text-lg mb-4">
+                <span className="material-symbols-outlined text-[22px]">smart_toy</span>
+              </div>
+              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
+                VelontraX AI Automation Software
+              </h3>
+              <p className="text-xs text-[#a08e7a] leading-relaxed">
+                Autonomous 24/7 AI qualification agents, predictive lead scoring (1-100), personalized follow-up generators, and automated CRM deal progression.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#ffc174] flex items-center justify-center font-bold text-lg mb-4">
+                <span className="material-symbols-outlined text-[22px]">forum</span>
+              </div>
+              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
+                India's #1 WhatsApp CRM
+              </h3>
+              <p className="text-xs text-[#a08e7a] leading-relaxed">
+                Official Meta Cloud API integration with zero ban risk, pre-approved broadcast campaigns, interactive chatbot flows, and sub-60s ad lead sync.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#3b82f6] flex items-center justify-center font-bold text-lg mb-4">
+                <span className="material-symbols-outlined text-[22px]">receipt_long</span>
+              </div>
+              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
+                GST Compliant Invoicing
+              </h3>
+              <p className="text-xs text-[#a08e7a] leading-relaxed">
+                Tailored for Indian taxation laws with CGST, SGST, IGST calculations, recurring monthly retainers, instant UPI payment links, and GSTR export sheets.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#f59e0b] flex items-center justify-center font-bold text-lg mb-4">
+                <span className="material-symbols-outlined text-[22px]">hub</span>
+              </div>
+              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
+                94+ Built-In Business Features
+              </h3>
+              <p className="text-xs text-[#a08e7a] leading-relaxed">
+                Eliminate 10+ expensive disconnected SaaS tools. Save over ₹16,000 annually with zero per-seat user fees and full team collaboration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Problem & Solution Showcase - The Business Operating System */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-8 w-full my-10">
         <div className="relative rounded-3xl bg-gradient-to-b from-[#10172a]/95 via-[#0c1427]/95 to-[#060e20]/95 border border-[#222a3d] backdrop-blur-2xl shadow-[0_24px_80px_rgba(0,0,0,0.8)] overflow-hidden p-4 sm:p-8 lg:p-12 transition-all">
@@ -188,59 +280,37 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
           <div className="absolute top-1/2 right-[-10%] w-96 h-96 bg-[#ffc174]/10 blur-[140px] rounded-full pointer-events-none" />
           <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-[#38bdf8]/10 blur-[130px] rounded-full pointer-events-none" />
 
-          {/* Top Control Bar & Filter Toggles */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-5 mb-8 border-b border-[#222a3d]/80">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-[#ff7b72]" />
-                <span className="w-3 h-3 rounded-full bg-[#ffc174]" />
-                <span className="w-3 h-3 rounded-full bg-[#38bdf8]" />
-              </div>
-              <span className="text-xs text-[#d8c3ad] font-mono pl-1 hidden sm:inline">
-                velontrax-os // business-transformation-matrix
-              </span>
-            </div>
-
-            {/* Interactive View Filter Switcher */}
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#060e20]/90 border border-[#222a3d]/90">
-              <button
-                onClick={() => setMatrixView('all')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  matrixView === 'all'
-                    ? 'bg-[#ffc174] text-[#060e20] shadow-[0_0_15px_rgba(255,193,116,0.4)]'
-                    : 'text-[#d8c3ad] hover:text-white'
-                }`}
-              >
-                All-in-One View
-              </button>
+          {/* View Filter: The Problem & The Solution */}
+          <div className="flex items-center justify-center pb-6 mb-8 border-b border-[#222a3d]/60">
+            <div className="inline-flex items-center gap-1.5 p-1 rounded-xl bg-[#060e20]/90 border border-[#222a3d]/90 shadow-lg">
               <button
                 onClick={() => setMatrixView('problem')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   matrixView === 'problem'
                     ? 'bg-[#ff7b72] text-[#060e20] shadow-[0_0_15px_rgba(255,123,114,0.4)]'
                     : 'text-[#d8c3ad] hover:text-white'
                 }`}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ff7b72]" />
+                <span className="w-2 h-2 rounded-full bg-[#ff7b72]" />
                 The Problem
               </button>
               <button
                 onClick={() => setMatrixView('solution')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   matrixView === 'solution'
                     ? 'bg-[#38bdf8] text-[#060e20] shadow-[0_0_15px_rgba(56,189,248,0.4)]'
                     : 'text-[#d8c3ad] hover:text-white'
                 }`}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
+                <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
                 The Solution
               </button>
             </div>
           </div>
 
           {/* ==================== 1. PROBLEM SECTION ==================== */}
-          {(matrixView === 'all' || matrixView === 'problem') && (
-            <div className="relative mb-14">
+          {matrixView === 'problem' && (
+            <div className="relative mb-6">
               {/* Problem Section Header */}
               <div className="text-center max-w-3xl mx-auto mb-10">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff7b72]/15 border border-[#ff7b72]/30 mb-4 shadow-[0_0_20px_rgba(255,123,114,0.15)]">
@@ -405,19 +475,8 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
             </div>
           )}
 
-          {/* Section Divider (When viewing All) */}
-          {matrixView === 'all' && (
-            <div className="relative my-12 flex items-center justify-center">
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#2d3449] to-transparent" />
-              <div className="absolute px-4 py-1.5 rounded-full bg-[#0d1527] border border-[#ffc174]/30 text-[11px] font-mono uppercase tracking-widest text-[#ffc174] shadow-[0_0_20px_rgba(255,193,116,0.2)] flex items-center gap-2">
-                <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
-                <span>THE ARCHITECTURAL SHIFT</span>
-              </div>
-            </div>
-          )}
-
           {/* ==================== 2. SOLUTION SECTION ==================== */}
-          {(matrixView === 'all' || matrixView === 'solution') && (
+          {matrixView === 'solution' && (
             <div className="relative">
               {/* Solution Section Header */}
               <div className="text-center max-w-3xl mx-auto mb-10">
@@ -725,10 +784,17 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
       {/* Compatible Integrations & Trust Ecosystem */}
       <section className="w-full bg-[#060e20] py-14 my-4 border-y border-[#222a3d]/60">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#172238] border border-[#2d3a52] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-pulse" />
-            <span className="text-[11px] uppercase tracking-widest text-[#ffc174] font-bold">
-              Compatible With Your Entire Sales Stack
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#172238]/90 via-[#1f2d48]/90 to-[#172238]/90 border border-[#ffc174]/40 shadow-[0_0_20px_rgba(255,193,116,0.2)] mb-3">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc174] opacity-80" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f59e0b]" />
+            </span>
+            <span className="text-[11px] uppercase tracking-widest font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#f59e0b]">
+              ENTERPRISE INTEGRATIONS ECOSYSTEM
+            </span>
+            <span className="text-[#a08e7a]">/</span>
+            <span className="text-[11px] font-bold text-[#dae2fd]">
+              ZERO-CODE SYNC
             </span>
           </div>
 
@@ -858,80 +924,7 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
         </div>
       </section>
 
-      {/* SEO Authority Section: India's No. 1 AI Automation Software */}
-      <section 
-        aria-label="India's No 1 AI Automation Software Overview"
-        className="max-w-[1440px] mx-auto px-4 sm:px-8 py-16 w-full"
-      >
-        <div className="rounded-3xl bg-[#0c1427] border border-[#222f47] p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#ffc174]/10 rounded-full blur-[100px] pointer-events-none" />
 
-          {/* Section Header */}
-          <div className="max-w-3xl mb-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#172238] border border-[#2d3a52] text-[#ffc174] text-xs font-bold uppercase tracking-wider mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-pulse" />
-              <span>India's Leading AI Operating System</span>
-            </div>
-            <h2 className="font-['Plus_Jakarta_Sans'] text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              VelontraX: India's No. 1 AI Automation Software &amp; Complete Business CRM
-            </h2>
-            <p className="text-sm sm:text-base text-[#d8c3ad] mt-3 leading-relaxed">
-              Engineered by <strong className="text-white">Velontra Global</strong>, VelontraX is the all-in-one business automation platform built to help Indian digital agencies, real estate builders, e-commerce stores, and high-growth startups capture, qualify, and convert leads at 10x speed.
-            </p>
-          </div>
-
-          {/* 4 Core Pillars for SEO Authority */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#ffc174] flex items-center justify-center font-bold text-lg mb-4">
-                <span className="material-symbols-outlined text-[22px]">smart_toy</span>
-              </div>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
-                VelontraX AI Automation Software
-              </h3>
-              <p className="text-xs text-[#a08e7a] leading-relaxed">
-                Autonomous 24/7 AI qualification agents, predictive lead scoring (1-100), personalized follow-up generators, and automated CRM deal progression.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#ffc174] flex items-center justify-center font-bold text-lg mb-4">
-                <span className="material-symbols-outlined text-[22px]">forum</span>
-              </div>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
-                India's #1 WhatsApp CRM
-              </h3>
-              <p className="text-xs text-[#a08e7a] leading-relaxed">
-                Official Meta Cloud API integration with zero ban risk, pre-approved broadcast campaigns, interactive chatbot flows, and sub-60s ad lead sync.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#3b82f6] flex items-center justify-center font-bold text-lg mb-4">
-                <span className="material-symbols-outlined text-[22px]">receipt_long</span>
-              </div>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
-                GST Compliant Invoicing
-              </h3>
-              <p className="text-xs text-[#a08e7a] leading-relaxed">
-                Tailored for Indian taxation laws with CGST, SGST, IGST calculations, recurring monthly retainers, instant UPI payment links, and GSTR export sheets.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#080e1c] border border-[#1b263b] hover:border-[#ffc174]/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-[#172238] text-[#f59e0b] flex items-center justify-center font-bold text-lg mb-4">
-                <span className="material-symbols-outlined text-[22px]">hub</span>
-              </div>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-base font-bold text-white mb-2">
-                94+ Built-In Business Features
-              </h3>
-              <p className="text-xs text-[#a08e7a] leading-relaxed">
-                Eliminate 10+ expensive disconnected SaaS tools. Save over ₹16,000 annually with zero per-seat user fees and full team collaboration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Bottom CTA: High-Converting Business Transformation Banner */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-8 py-16 w-full">

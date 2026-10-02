@@ -848,24 +848,6 @@ export const AnimatedPanelStudio: React.FC<AnimatedPanelStudioProps> = ({
               {renderWorkstationCanvas(false)}
             </div>
           )}
-
-          {/* Under-frame hint badge */}
-          <div className="flex flex-wrap items-center justify-between gap-2 mt-2 px-1 text-[10px] sm:text-[11px] text-[#a08e7a]">
-            <div className="flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[14px] text-[#ffc174]">
-                verified
-              </span>
-              <span className="text-[#d8c3ad]">
-                Single-Box Architecture: Poora dashboard (Sidebar, KPIs, Ask Nova, Cursor) ek hi box me seamlessly fit hai.
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 font-mono text-[10px]">
-              <span className="text-[#ffc174]">● 60 FPS MOTION</span>
-              <span>•</span>
-              <span className="text-[#dae2fd]">VECTOR GLIDE</span>
-            </div>
-          </div>
         </div>
       </div>
 

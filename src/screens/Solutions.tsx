@@ -253,10 +253,17 @@ export const Solutions: React.FC<SolutionsProps> = ({
 
         {/* Hero Section */}
         <section className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-10 sm:pt-16 pb-12 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1b263b] border border-[#2d3a52] shadow-sm mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-ping" />
-            <span className="text-[11px] uppercase tracking-widest text-[#ffc174] font-bold">
-              Tailored Industry Blueprints
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-gradient-to-r from-[#172238]/95 via-[#1f2d48]/95 to-[#172238]/95 border border-[#ffc174]/50 shadow-[0_0_25px_rgba(255,193,116,0.25)] backdrop-blur-xl mb-4 hover:border-[#ffc174] transition-all duration-300">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc174] opacity-80" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f59e0b] shadow-[0_0_8px_#ffc174]" />
+            </span>
+            <span className="text-[11px] sm:text-xs uppercase tracking-widest font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#f59e0b]">
+              INDUSTRY-SPECIFIC AI BLUEPRINTS
+            </span>
+            <span className="text-[#ffc174]/60 font-mono text-xs">/</span>
+            <span className="text-[11px] sm:text-xs font-bold text-[#dae2fd] tracking-wide">
+              6+ DEPLOYMENT STACKS
             </span>
           </div>
 

@@ -168,3 +168,93 @@
   box-shadow: 0 0 65px rgba(245, 158, 11, 0.4);
 }
 
+/* Orbit Animations */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes orbit-counter-spin-reverse {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes core-ambient-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.4), 0 0 70px rgba(255, 193, 116, 0.2);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 55px rgba(245, 158, 11, 0.65), 0 0 100px rgba(255, 193, 116, 0.35);
+  }
+}
+
+.animate-orbit-spin-slow {
+  animation: orbit-spin 36s linear infinite;
+}
+
+.animate-orbit-spin-fast {
+  animation: orbit-spin 22s linear infinite;
+}
+
+.animate-orbit-spin-reverse {
+  animation: orbit-spin-reverse 48s linear infinite;
+}
+
+.animate-orbit-counter-slow {
+  animation: orbit-counter-spin 36s linear infinite;
+}
+
+.animate-orbit-counter-fast {
+  animation: orbit-counter-spin 22s linear infinite;
+}
+
+.animate-orbit-counter-reverse {
+  animation: orbit-counter-spin-reverse 48s linear infinite;
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 8s linear infinite;
+}
+
+.animate-core-pulse {
+  animation: core-ambient-pulse 4s ease-in-out infinite;
+}
+
+

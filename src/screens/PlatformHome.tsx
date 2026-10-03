@@ -73,8 +73,8 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
     <div className="flex flex-col w-full overflow-hidden">
       {/* Top Ambient Glow Aura */}
       <div className="relative w-full">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[1100px] h-[480px] bg-gradient-to-b from-[#ffc174]/15 via-[#0053db]/15 to-transparent blur-[140px] pointer-events-none rounded-full" />
-        <div className="absolute top-20 right-[-10%] w-[420px] h-[360px] bg-[#f59e0b]/10 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[1100px] h-[480px] bg-[radial-gradient(ellipse_at_center,rgba(255,193,116,0.14)_0%,rgba(0,83,219,0.1)_45%,transparent_75%)] pointer-events-none rounded-full" />
+        <div className="absolute top-20 right-[-10%] w-[420px] h-[360px] bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.1)_0%,transparent_70%)] pointer-events-none rounded-full" />
 
         {/* Hero Header Block */}
         <section className="relative max-w-[1440px] mx-auto px-4 sm:px-8 pt-10 sm:pt-16 pb-10 flex flex-col items-center text-center">

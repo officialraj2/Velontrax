@@ -258,7 +258,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

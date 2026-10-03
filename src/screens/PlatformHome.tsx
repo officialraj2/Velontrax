@@ -27,20 +27,20 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState('SUPERCHARGED BY AI.');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [typingSpeed, setTypingSpeed] = useState(65);
 
   useEffect(() => {
     const targetPhrase = animatedPhrases[phraseIndex];
     let timer: NodeJS.Timeout;
 
     if (!isDeleting && currentText === targetPhrase) {
-      // Pause at full word for 2.2 seconds
-      timer = setTimeout(() => setIsDeleting(true), 2200);
+      // Pause at full word for 1.7 seconds
+      timer = setTimeout(() => setIsDeleting(true), 1700);
     } else if (isDeleting && currentText === '') {
       // Switch phrase and pause briefly
       setIsDeleting(false);
       setPhraseIndex((prev) => (prev + 1) % animatedPhrases.length);
-      timer = setTimeout(() => {}, 250);
+      timer = setTimeout(() => {}, 120);
     } else {
       timer = setTimeout(() => {
         setCurrentText(
@@ -48,7 +48,7 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
             ? targetPhrase.substring(0, currentText.length - 1)
             : targetPhrase.substring(0, currentText.length + 1)
         );
-        setTypingSpeed(isDeleting ? 40 : 85);
+        setTypingSpeed(isDeleting ? 25 : 55);
       }, typingSpeed);
     }
 
@@ -117,15 +117,15 @@ export const PlatformHome: React.FC<PlatformHomeProps> = ({
             </span>
           </button>
 
-          {/* Hero Headline - Locked strictly to 2 lines across all screen sizes */}
-          <h1 className="font-['Plus_Jakarta_Sans'] text-[21px] min-[360px]:text-[23px] min-[390px]:text-[26px] min-[440px]:text-[29px] sm:text-5xl lg:text-6xl max-w-5xl tracking-tight font-extrabold mb-6 leading-[1.18] flex flex-col items-center justify-center select-none text-center">
+          {/* Hero Headline - Flexible 3-line wrap on mobile, 2-line lock on desktop */}
+          <h1 className="font-['Plus_Jakarta_Sans'] text-[24px] min-[360px]:text-[28px] min-[400px]:text-[32px] sm:text-5xl lg:text-6xl max-w-5xl tracking-tight font-extrabold mb-6 leading-[1.2] sm:leading-[1.14] flex flex-col items-center justify-center select-none text-center px-1">
             {/* Line 1 */}
             <span className="block text-[#dae2fd] whitespace-nowrap">
               YOUR BUSINESS.
             </span>
-            {/* Line 2 with fixed minimum height to prevent jitter */}
-            <span className="inline-flex items-center justify-center max-w-full whitespace-nowrap bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#b4c5ff] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(255,193,116,0.35)] min-h-[1.25em]">
-              <span>{currentText || '\u00A0'}</span>
+            {/* Line 2 (and 3 on mobile) with dynamic wrap and stable minimum height */}
+            <span className="inline-block max-w-full text-center whitespace-normal sm:whitespace-nowrap bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#b4c5ff] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(255,193,116,0.35)] min-h-[2.4em] sm:min-h-[1.2em]">
+              <span className="inline break-words">{currentText || '\u00A0'}</span>
               <span className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.75em] sm:h-[0.8em] ml-1 sm:ml-2 bg-[#ffc174] animate-pulse align-middle shrink-0" />
             </span>
           </h1>

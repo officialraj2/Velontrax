@@ -403,73 +403,22 @@ export const VelontraXOrbitShowcase: React.FC = () => {
           <div className="absolute w-20 h-20 sm:w-40 sm:h-40 rounded-full border border-dashed sm:border-2 border-[#ffc174]/50 animate-orbit-spin-slow pointer-events-none opacity-80" />
 
           {/* Center Holographic Core Shield - Scaled for Mobile and Desktop */}
-          <div className="relative w-18 h-18 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#18233c] via-[#0d162a] to-[#050b18] border-1.5 sm:border-2 border-[#ffc174] p-1 sm:p-1.5 shadow-[0_0_35px_rgba(245,158,11,0.5),inset_0_0_15px_rgba(255,193,116,0.3)] flex flex-col items-center justify-center text-center cursor-pointer group hover:scale-105 transition-transform duration-300">
+          <div className="relative w-20 h-20 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#18233c] via-[#0d162a] to-[#050b18] border-1.5 sm:border-2 border-[#ffc174] p-2 sm:p-4 shadow-[0_0_35px_rgba(245,158,11,0.5),inset_0_0_15px_rgba(255,193,116,0.3)] flex flex-col items-center justify-center text-center cursor-pointer group hover:scale-105 transition-transform duration-300">
             {/* Holographic Concentric Inner Border */}
-            <div className="absolute inset-0.5 sm:inset-1 rounded-full border border-[#ffc174]/40 pointer-events-none" />
+            <div className="absolute inset-1 sm:inset-1.5 rounded-full border border-[#ffc174]/40 pointer-events-none" />
 
-            {/* Glowing Custom VelontraX Emblem SVG */}
-            <div className="relative mb-0.5 sm:mb-1 flex items-center justify-center">
-              <svg 
-                className="w-6 h-6 sm:w-11 sm:h-11 drop-shadow-[0_0_12px_rgba(255,193,116,0.85)]" 
-                viewBox="0 0 100 100" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Outer Hexagon Circuit Node */}
-                <polygon 
-                  points="50,6 90,28 90,72 50,94 10,72 10,28" 
-                  stroke="url(#vxGoldGradMobile)" 
-                  strokeWidth="3.5" 
-                  strokeDasharray="4 2"
-                  className="animate-spin"
-                  style={{ transformOrigin: '50% 50%', animationDuration: '30s' }}
-                />
-                {/* Central V and X Geometric Intersection */}
-                <path 
-                  d="M26 30 L50 70 L74 30" 
-                  stroke="url(#vxGoldGradMobile)" 
-                  strokeWidth="6" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                />
-                <path 
-                  d="M32 68 L68 32" 
-                  stroke="#ffffff" 
-                  strokeWidth="4" 
-                  strokeLinecap="round" 
-                  opacity="0.9"
-                />
-                <circle cx="50" cy="50" r="4.5" fill="#f59e0b" className="animate-ping" />
-                <circle cx="50" cy="50" r="3.5" fill="#ffffff" />
-                
-                <defs>
-                  <linearGradient id="vxGoldGradMobile" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#ffddb8" />
-                    <stop offset="0.5" stopColor="#ffc174" />
-                    <stop offset="1" stopColor="#f59e0b" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            {/* VelontraX Brand Name in Single Line */}
-            <div className="font-['Plus_Jakarta_Sans'] text-[10px] sm:text-sm font-extrabold tracking-tight leading-none text-white flex items-center justify-center gap-0.5">
+            {/* VelontraX Brand Name in Clean Typography */}
+            <div className="font-['Plus_Jakarta_Sans'] text-xs sm:text-lg font-extrabold tracking-tight leading-none text-white flex items-center justify-center gap-0.5">
               <span>velontra</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f59e0b] to-[#ffc174] drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f59e0b] via-[#ffc174] to-[#f59e0b] drop-shadow-[0_0_12px_rgba(245,158,11,0.7)]">
                 X
               </span>
             </div>
 
-            {/* Core Subtitle */}
-            <span className="text-[7px] sm:text-[9px] uppercase tracking-widest font-black text-[#ffc174] mt-0.5 sm:mt-1">
+            {/* Core AI Subtitle */}
+            <span className="text-[8px] sm:text-xs uppercase tracking-widest font-black text-[#ffc174] mt-1 sm:mt-1.5 drop-shadow-[0_0_8px_rgba(255,193,116,0.5)]">
               CORE AI
             </span>
-
-            {/* Status Indicator */}
-            <div className="hidden sm:inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-[#172238]/90 border border-[#2d3a52] text-[8px] text-[#dae2fd] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
-              <span>SYNC 60ms</span>
-            </div>
           </div>
         </div>
       </div>

@@ -19,6 +19,7 @@ import { DocsScreen } from './screens/DocsScreen.tsx';
 import { PrivacyPolicyScreen } from './screens/PrivacyPolicyScreen.tsx';
 import { TermsScreen } from './screens/TermsScreen.tsx';
 import { AuthScreen } from './screens/AuthScreen.tsx';
+import { NetworkNodesBackground } from './components/NetworkNodesBackground.tsx';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<ScreenType>(() => {
@@ -91,7 +92,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b1326] text-[#dae2fd] font-['Inter'] flex flex-col selection:bg-[#f59e0b] selection:text-[#613b00]">
+    <div className="min-h-screen bg-[#060d1e] text-[#dae2fd] font-['Inter'] flex flex-col selection:bg-[#f59e0b] selection:text-[#613b00] relative">
+      {/* Dynamic Network Points & Connected Glowing Nodes Background - Active Across All Pages */}
+      <NetworkNodesBackground />
+
       {/* Fixed Header */}
       <Header
         currentScreen={currentScreen}
@@ -99,8 +103,8 @@ export default function App() {
         onOpenBookDemo={() => setIsBookDemoOpen(true)}
       />
 
-      {/* Main Content Area */}
-      <main className="w-full pt-20 flex-1">
+        {/* Main Content Area */}
+        <main className="w-full pt-20 flex-1 relative z-10">
         {currentScreen === 'platform-and-home' && (
           <PlatformHome
             onNavigate={handleNavigate}

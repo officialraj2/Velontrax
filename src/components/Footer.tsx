@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
   };
 
   return (
-    <footer className="w-full bg-[#060e20] pt-12 pb-8 text-[#d8c3ad] border-t border-[#222a3d]/60">
+    <footer className="relative z-20 w-full bg-[#050b18]/98 backdrop-blur-md pt-12 pb-8 text-[#dae2fd] border-t border-[#222a3d]/80 shadow-[0_-12px_32px_rgba(0,0,0,0.6)]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 flex flex-col gap-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Brand Info & Legal Entity */}
@@ -38,14 +38,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
               </div>
             </div>
 
-            <p className="text-sm text-[#d8c3ad] max-w-sm leading-relaxed">
+            <p className="text-sm text-[#cbd5e1] max-w-sm leading-relaxed">
               All-in-One AI Sales, WhatsApp CRM &amp; Workflow Automation platform engineered by <strong className="text-white">Velontra Global</strong>.
             </p>
 
-            <div className="text-xs text-[#a08e7a] space-y-1.5 p-3.5 rounded-xl bg-[#0b1326] border border-[#1f2b42]">
-              <div><strong className="text-[#dae2fd]">Legal Registered Entity:</strong> Velontra Global</div>
-              <div><strong className="text-[#dae2fd]">Registered Address:</strong> Chatti, Rampur Bushahr, Shimla, Himachal Pradesh 172001, India</div>
-              <div><strong className="text-[#dae2fd]">Official Contact:</strong> <a href="mailto:velontrax@gmail.com" className="text-[#ffc174] hover:underline">velontrax@gmail.com</a></div>
+            <div className="text-xs text-[#94a3b8] space-y-1.5 p-3.5 rounded-xl bg-[#091224] border border-[#1e293b]">
+              <div><strong className="text-[#f1f5f9]">Legal Registered Entity:</strong> <span className="text-[#e2e8f0]">Velontra Global</span></div>
+              <div><strong className="text-[#f1f5f9]">Registered Address:</strong> <span className="text-[#cbd5e1]">Chatti, Rampur Bushahr, Shimla, Himachal Pradesh 172001, India</span></div>
+              <div><strong className="text-[#f1f5f9]">Official Contact:</strong> <a href="mailto:velontrax@gmail.com" className="text-[#ffc174] hover:underline font-medium">velontrax@gmail.com</a></div>
             </div>
 
             <div className="flex items-center gap-2 flex-wrap pt-1">
@@ -64,36 +64,36 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
 
           {/* Solutions & Verticals */}
           <div className="lg:col-span-2 flex flex-col gap-2.5">
-            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-[#dae2fd] uppercase tracking-wider mb-1">
+            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-white uppercase tracking-wider mb-1">
               Solutions
             </span>
             <button
               onClick={() => onNavigate('solutions-smart-crm-and-leads')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               Digital Agencies
             </button>
             <button
               onClick={() => onNavigate('solutions-smart-crm-and-leads')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               E-commerce &amp; D2C
             </button>
             <button
               onClick={() => onNavigate('solutions-smart-crm-and-leads')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               Real Estate &amp; Builders
             </button>
             <button
               onClick={() => onNavigate('solutions-smart-crm-and-leads')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               Education &amp; Coaching
             </button>
             <button
               onClick={() => onNavigate('solutions-smart-crm-and-leads')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               94+ Features Directory
             </button>
@@ -101,18 +101,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
 
           {/* Platform & Pricing */}
           <div className="lg:col-span-2 flex flex-col gap-2.5">
-            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-[#dae2fd] uppercase tracking-wider mb-1">
+            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-white uppercase tracking-wider mb-1">
               Pricing &amp; Plans
             </span>
             <button
               onClick={() => onNavigate('pricing')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               Monthly Plan (₹3,000)
             </button>
             <button
               onClick={() => onNavigate('pricing')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               Annual Plan (Save ₹16k)
             </button>
@@ -125,7 +125,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
             </button>
             <button
               onClick={() => onNavigate('how-it-works')}
-              className="text-left text-sm text-[#d8c3ad] hover:text-[#ffc174] transition-colors cursor-pointer"
+              className="text-left text-sm text-[#cbd5e1] hover:text-[#ffc174] transition-colors cursor-pointer"
             >
               How It Works
             </button>
@@ -139,15 +139,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
 
           {/* Legal & Newsletter Digest */}
           <div className="lg:col-span-4 flex flex-col gap-3">
-            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-[#dae2fd] uppercase tracking-wider">
+            <span className="font-['Plus_Jakarta_Sans'] text-sm font-bold text-white uppercase tracking-wider">
               Stay Updated
             </span>
-            <p className="text-xs text-[#a08e7a] leading-relaxed">
+            <p className="text-xs text-[#cbd5e1] leading-relaxed">
               Receive WhatsApp marketing blueprints, conversion frameworks, and platform release updates.
             </p>
-            <form onSubmit={handleSubscribe} className="flex items-center gap-2 rounded-xl bg-[#121c30] border border-[#222f47] p-1.5 focus-within:border-[#ffc174] transition-colors">
+            <form onSubmit={handleSubscribe} className="flex items-center gap-2 rounded-xl bg-[#0e172a] border border-[#222f47] p-1.5 focus-within:border-[#ffc174] transition-colors">
               <input
-                className="w-full bg-transparent px-3 text-xs text-[#dae2fd] placeholder:text-[#718096] focus:outline-none"
+                className="w-full bg-transparent px-3 text-xs text-[#f1f5f9] placeholder:text-[#94a3b8] focus:outline-none"
                 placeholder="Enter your work email"
                 type="email"
                 value={email}
@@ -161,7 +161,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
               </button>
             </form>
 
-            <div className="flex items-center gap-4 text-xs text-[#a08e7a] pt-2 flex-wrap">
+            <div className="flex items-center gap-4 text-xs text-[#94a3b8] pt-2 flex-wrap">
               <button
                 onClick={() => onNavigate('privacy-policy')}
                 className="hover:text-[#ffc174] cursor-pointer"
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
         </div>
 
         {/* Bottom Sub-footer */}
-        <div className="pt-6 border-t border-[#222a3d]/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#a08e7a]">
+        <div className="pt-6 border-t border-[#222a3d]/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94a3b8]">
           <p>© 2025 Velontra Global. All rights reserved.</p>
           <div className="flex items-center gap-5 flex-wrap">
             <button 
@@ -212,9 +212,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onShowToast, onOpenB
         </div>
 
         {/* Meta & WhatsApp Trademark Disclaimer Bar */}
-        <div className="pt-4 mt-2 border-t border-[#1b263b] text-[11px] text-[#7888a6] leading-relaxed text-center sm:text-left">
+        <div className="pt-4 mt-2 border-t border-[#1b263b] text-[11px] text-[#94a3b8] leading-relaxed text-center sm:text-left">
           <p>
-            <strong className="text-[#a08e7a]">Meta &amp; WhatsApp Trademark Disclaimer:</strong> WhatsApp® and Meta® are registered trademarks of Meta Platforms, Inc. Velontra Global is an independent software automation provider and is not sponsored, endorsed, affiliated with, or an official partner of Meta Platforms, Inc. or WhatsApp Inc. Platform capabilities operate via published Meta Graph APIs in accordance with Meta Platform Terms.
+            <strong className="text-[#e2e8f0]">Meta &amp; WhatsApp Trademark Disclaimer:</strong> WhatsApp® and Meta® are registered trademarks of Meta Platforms, Inc. Velontra Global is an independent software automation provider and is not sponsored, endorsed, affiliated with, or an official partner of Meta Platforms, Inc. or WhatsApp Inc. Platform capabilities operate via published Meta Graph APIs in accordance with Meta Platform Terms.
           </p>
         </div>
       </div>

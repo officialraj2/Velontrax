@@ -18,6 +18,13 @@ export const Header: React.FC<HeaderProps> = ({
   const [authUser, setAuthUser] = useState<User | null>(null);
 
   useEffect(() => {
+    // Ensure clean state without residual light theme
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove('light-theme');
+      document.documentElement.classList.add('dark-theme');
+      localStorage.removeItem('velontrax_theme');
+    }
+
     const unsub = onAuthStateChanged(auth, (user) => {
       setAuthUser(user);
     });

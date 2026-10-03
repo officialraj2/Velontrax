@@ -765,22 +765,25 @@ export const AnimatedPanelStudio: React.FC<AnimatedPanelStudioProps> = ({
   return (
     <section className="relative max-w-[1440px] mx-auto px-2 sm:px-6 lg:px-8 py-8 w-full select-none">
       {/* Studio Header */}
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ffc174]/10 border border-[#ffc174]/30 mb-2.5 shadow-inner">
-          <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-ping" />
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#ffc174] font-bold">
-            Single-Box Pro View
+      <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8 px-2">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#172238]/95 via-[#1f2d48]/95 to-[#172238]/95 border border-[#ffc174]/40 shadow-[0_0_20px_rgba(255,193,116,0.2)] mb-3">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc174] opacity-80" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f59e0b]" />
+          </span>
+          <span className="text-[11px] sm:text-xs uppercase tracking-widest font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffddb8] via-[#ffc174] to-[#f59e0b]">
+            OUR LIVE PREVIEW
           </span>
           <span className="text-[#a08e7a]">/</span>
-          <span className="text-[10px] sm:text-[11px] text-[#dae2fd]">
-            Autonomous Sovereign Workstation
+          <span className="text-[11px] sm:text-xs text-[#dae2fd] font-bold">
+            AUTONOMOUS OPERATING SUITE
           </span>
         </div>
-        <h2 className="font-['Plus_Jakarta_Sans'] text-2xl sm:text-3xl lg:text-4xl text-[#dae2fd] font-bold tracking-tight">
-          VelontraX Sovereign Operations Suite
+        <h2 className="font-['Plus_Jakarta_Sans'] text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Experience VelontraX In Live Action
         </h2>
-        <p className="text-xs sm:text-sm text-[#d8c3ad] mt-1.5 leading-relaxed">
-          The full enterprise product interface presented in an ultra-clean, unified single frame. Every navigation link, live KPI card, Nova AI prompt, and autonomous cursor action fits seamlessly in one view.
+        <p className="text-xs sm:text-base text-[#d8c3ad] mt-2.5 max-w-2xl leading-relaxed">
+          Watch our unified AI business operating system manage live campaigns, trigger automated workflows, and navigate CRM operations in real-time.
         </p>
       </div>
 
@@ -795,32 +798,6 @@ export const AnimatedPanelStudio: React.FC<AnimatedPanelStudioProps> = ({
           {/* Subtle Golden Glow Corner Accents */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-[#f59e0b]/10 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#ffc174]/10 rounded-full blur-2xl pointer-events-none" />
-
-          {/* Window Chrome Header Bar */}
-          <div className="flex items-center justify-between px-2.5 py-1.5 mb-2 bg-[#091024] rounded-xl border border-[#1a253e] text-[11px]">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#ffc174] animate-ping" />
-              <span className="font-semibold text-[#dae2fd] text-[11px] sm:text-xs">
-                VelontraX Sovereign Workstation
-              </span>
-              <span className="px-2 py-0.5 rounded bg-[#ffc174]/15 text-[#ffc174] text-[9px] font-mono font-bold uppercase hidden sm:inline">
-                Single Box Fitted
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 text-[10px] font-mono text-[#a08e7a]">
-              <span className="hidden sm:inline">
-                SCALE: {Math.round(scale * 100)}%
-              </span>
-              <button
-                onClick={() => setIsFullscreenModal(true)}
-                className="flex items-center gap-1 text-[#ffc174] hover:underline cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-[14px]">open_in_full</span>
-                <span>Zoom</span>
-              </button>
-            </div>
-          </div>
 
           {/* THE SINGLE BOX WORKSPACE HOLDER */}
           {viewMode === 'fit' ? (
